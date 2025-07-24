@@ -4,6 +4,8 @@ import tensorflow as tf
 from PIL import Image
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import base64
+
+
 st.set_page_config(
     page_title="Fake Image Detector",
     page_icon="🧠",
@@ -13,7 +15,7 @@ st.set_page_config(
 # Load model
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("E:/Streamlit_New/mobilenet_fakeness_classifier.h5")
+    model = tf.keras.models.load_model("mobilenet_fakeness_classifier.h5")
     return model
 
 model = load_model()
@@ -34,7 +36,7 @@ def get_base64_image(image_path):
     return base64.b64encode(data).decode()
 
 # Background image path
-image_path = "E:/Streamlit_New/3661054.jpg"
+image_path = "background.jpeg"
 encoded_bg = get_base64_image(image_path)
 
 # Custom CSS styling
@@ -55,8 +57,8 @@ st.markdown(f"""
         100% {{ background-size: 110% 110%; }}
     }}
     h1, h2, h3, h4, h5, h6, p, strong, div, label, span {{
-        color: #ffffff !important;
-        text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+        color: #000000 !important;
+        text-shadow: none !important;
     }}
     .frosted {{
         background: rgba(255, 255, 255, 0.1);
